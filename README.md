@@ -107,7 +107,7 @@
 ---
 
 
-'''mermaid
+```mermaid
 
 graph LR;
 
@@ -121,7 +121,7 @@ graph LR;
 
 	staged -- "change" --> modified;
 
-'''
+```
 
 ---
 
