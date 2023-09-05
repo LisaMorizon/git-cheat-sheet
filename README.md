@@ -81,3 +81,58 @@
 Внутри HEAD — ссылка на служебный файл: refs/heads/master
 
 ---
+
+# Типичный жизненный цикл файла в Git
+
+---
+
+1. Файл только что создали. Git про него ещё ничего не знает. Состояние: untracked.
+
+2. Файл добавили в staging area с помощью git add. Состояние: staged (+ tracked).
+
+	* Возможно, изменили файл ещё раз. Состояния: staged, modified (+ tracked).
+
+	* Ещё раз выполнили git add. Состояние: staged (+ tracked).
+
+3. Сделали коммит с помощью git commit. Состояние: tracked.
+
+4. Изменили файл. Состояние: modified (+ tracked).
+
+5. Снова добавили в staging area с помощью git add. Состояния: staged (+ tracked).
+
+6. Сделали коммит. Состояния: tracked.
+
+7. Повторили пункты 4 - 7 много-много раз.
+
+---
+
+
+'''mermaid
+
+graph LR;
+
+	untracked -- "git add" --> staged;
+
+	staged -- "git commit" --> tracked/comitted;
+
+	tracked -- "change" --> modified;
+
+	modified -- "git add" --> staged;
+
+	staged -- "change" --> modified;
+
+'''
+
+---
+
+## Git status - показывает следующие состояния файлов:
+
+* staged (Changes to be committed в выводе git status)
+
+* modified (Changes not staged for commit)
+
+* untracked (Untracked files)
+
+---
+
+
